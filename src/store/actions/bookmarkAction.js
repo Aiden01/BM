@@ -8,6 +8,7 @@ export const fetchBookmarks = (limit = 15) => async dispatch => {
     // get the data
     const bookmarks = await db.bookmarks
         .limit(limit)
+        .desc()
         .toArray()
     
     // dispatch to the reducer
