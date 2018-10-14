@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import PageTitle from '../components/Layout/PageTitle'
 import db from '../db'
 import Alerts from '../components/Alerts'
@@ -93,7 +93,7 @@ class AddBookmark extends Component {
                     </form>
                 </div>
             </div>
-        );
+        )
     }
 }
 
@@ -102,4 +102,4 @@ AddBookmark.propTypes = {
 }
 
 
-export default connect(null, { AddAlert })(AddBookmark);
+export default connect(null, { AddAlert })(AddBookmark)
