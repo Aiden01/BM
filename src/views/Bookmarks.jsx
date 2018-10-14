@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import PageTitle from '../components/Layout/PageTitle'
 import PropTypes from 'prop-types'
@@ -34,7 +34,7 @@ class Bookmarks extends Component {
     render() {
         const bookmarks = this.props.bookmarks.map(({ link, id, description, title }) => <BookmarkCard link={link} key={id} id={id} description={description} title={title} onClick={this.deleteBookmark.bind(this)} />)
         return (
-            <div className="bookmarks w-4/5 float-right">
+            <div className="bookmarks w-4/5 float-right view">
                 <div className="p-10">
                     <PageTitle title="All your bookmarks" />
                     { this.props.bookmarks.length >= 1 ? <input type="text" placeholder="Search a bookmark" className="w-full bg-white p-5 text-grey-darkest mb-10" onChange={ this.handleSearch.bind(this) } />: '' }
@@ -43,7 +43,7 @@ class Bookmarks extends Component {
                     ): this.props.bookmarks.length <= 0 ? <NoBookmarks />: bookmarks }
                 </div>
             </div>
-        );
+        )
     }
 }
 

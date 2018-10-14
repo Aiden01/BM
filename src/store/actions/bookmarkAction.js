@@ -28,8 +28,8 @@ export const deleteBookmark = (id) => async dispatch => {
         .delete()
 
     dispatch({
-       type: DELETE_BOOKMARK,
-       payload: id 
+        type: DELETE_BOOKMARK,
+        payload: id 
     })
 } 
 

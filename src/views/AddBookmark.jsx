@@ -70,7 +70,7 @@ class AddBookmark extends Component {
 
     render() {
         return (
-            <div className="h-full w-4/5 float-right bg-grey-lighter">
+            <div className="h-full w-4/5 float-right bg-grey-lighter view">
                 <div className="p-10 w-full">
                     <PageTitle title="Add a new bookmark" />
                     <Alerts />

@@ -6,3 +6,18 @@ body, html {
 body {
   background-color: #F1F5F8;
 }
+
+.view {
+  opacity: 0;
+  transform: translateY(20px);
+  height: 0;
+  animation: appear .3s forwards;
+}
+
+@keyframes appear {
+  to {
+      opacity: 1;
+      height: inherit;
+      transform: translateY(0);
+  }
+}
