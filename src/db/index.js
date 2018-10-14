@@ -7,10 +7,6 @@ window.addEventListener('unhandledrejection', (ev) => {
 }) 
 
 
-db.open()
-    .then(() => console.log('Database openned'))
-    .catch(() => indexedDBNotAvailable())
-
 
 if(!window.indexedDB) {
     indexedDBNotAvailable()
