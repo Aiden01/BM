@@ -1,0 +1,11 @@
+.bookmark {
+    opacity: 0;
+    transition: all 0.3s;
+    animation: fade .3s forwards;
+}
+
+@keyframes fade {
+    to {
+        opacity: 1;
+    }
+}

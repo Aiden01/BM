@@ -25,7 +25,7 @@ export function BookmarksReducer(state = initialState, { type, payload }) {
          * Here we want to delete a bookmark
          */
         case DELETE_BOOKMARK:
-            const bookmarks = state.all.filter(({ id }) => id !== payload.id)
+            const bookmarks = state.all.filter(({ id }) => id !== payload)
             return {
                 ...state,
                 all: bookmarks
