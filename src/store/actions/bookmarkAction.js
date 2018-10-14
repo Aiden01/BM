@@ -19,6 +19,9 @@ export const fetchBookmarks = (limit = 15) => async dispatch => {
     
 }
 
+/**
+ * Delete a bookmark
+ */
 export const deleteBookmark = (id) => async dispatch => {
     await db.bookmarks
         .where({ id })
@@ -29,3 +32,15 @@ export const deleteBookmark = (id) => async dispatch => {
        payload: id 
     })
 } 
+
+export const searchBookmark = (query) => async (dispatch, getState) => {
+    // get the data
+    const bookmarks = await db.bookmarks
+        .toArray()
+
+    const payload = query === '' ? bookmarks : bookmarks.filter(({ title, description }) => title.toLowerCase().includes(query.toLowerCase()) || description.toLowerCase().includes(query.toLowerCase()))
+    dispatch({
+        type: FETCH_BOOKMARKS,
+        payload
+    })
+}
