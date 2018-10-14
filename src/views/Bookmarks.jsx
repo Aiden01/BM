@@ -9,8 +9,18 @@ import BookmarkCard from '../components/bookmarks/BookmarkCard'
 
 class Bookmarks extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
+            loading: true
+        }
+    }
+
     componentDidMount() {
         this.props.fetchBookmarks()
+            .then(() => this.setState({
+                loading: false
+            }))
     }
 
     deleteBookmark(id) {
@@ -23,7 +33,9 @@ class Bookmarks extends Component {
             <div className="bookmarks w-4/5 float-right">
                 <div className="p-10">
                     <PageTitle title="All your bookmarks" />
-                    { this.props.bookmarks.length <= 0 ? <NoBookmarks />: bookmarks }
+                    { this.state.loading ? (
+                        <h3>Loading...</h3>
+                    ): this.props.bookmarks.length <= 0 ? <NoBookmarks />: bookmarks }
                 </div>
             </div>
         );
