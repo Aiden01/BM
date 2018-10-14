@@ -1,0 +1,11 @@
+.nav-link {
+    transition: all .3s;
+}
+
+.link-active .nav-link {
+    border-left: 10px solid #2f365f;
+}
+
+.nav-link:hover {
+    border-left: 10px solid #2f365f;
+}
