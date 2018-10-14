@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PageTitle from '../components/Layout/PageTitle'
 import db from '../db'
+import Alerts from '../components/Alerts'
+import { AddAlert } from '../store/actions/notificationAction'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class AddBookmark extends Component {
 
@@ -21,26 +25,46 @@ class AddBookmark extends Component {
     }
 
     handleSubmit(e) {
+
+        e.preventDefault()
+
         this.setState({
             loading: true
         })
-        e.preventDefault()
-        const bookmark = {
-            link: this.state.link,
-            description: this.state.description,
-            title: this.state.title
-        }
 
-        db.bookmarks
-            .add({ ...bookmark })
-            .then(() => {
-                this.setState({
-                    link: '',
-                    description: '',
-                    title: '',
-                    loading: false
+        if(this.state.link !== '' && this.state.description !== '' && this.state.title !== '') {
+    
+            const bookmark = {
+                link: this.state.link,
+                description: this.state.description,
+                title: this.state.title
+            }
+    
+            db.bookmarks
+                .add({ ...bookmark })
+                .then(() => {
+                    this.setState({
+                        link: '',
+                        description: '',
+                        title: '',
+                        loading: false
+                    })
+    
+                    this.props.AddAlert({
+                        type: 'success',
+                        message: 'Bookmark saved successfully!'
+                    })
+    
                 })
+        } else {
+            this.setState({
+                loading: false
             })
+            this.props.AddAlert({
+                type: 'error',
+                message: 'Please fill all the fields!'
+            })
+        }
 
     }
 
@@ -49,6 +73,7 @@ class AddBookmark extends Component {
             <div className="h-full w-4/5 float-right bg-grey-lighter">
                 <div className="p-10 w-full">
                     <PageTitle title="Add a new bookmark" />
+                    <Alerts />
                     <form className="w-full" onSubmit={this.handleSubmit.bind(this)}>
                         <div className="w-full">
                             <label className="block text-grey-darkest text-2xl font-semibold mb-5">Link</label>
@@ -72,5 +97,9 @@ class AddBookmark extends Component {
     }
 }
 
+AddBookmark.propTypes = {
+    AddAlert: PropTypes.func.isRequired
+}
 
-export default AddBookmark;
+
+export default connect(null, { AddAlert })(AddBookmark);

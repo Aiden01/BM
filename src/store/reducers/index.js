@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux'
 
 import { BookmarksReducer } from './bookmarksReducer'
+import { NotificationsReducer } from './notificationsReducer'
 
 const rootReducer = combineReducers({
-    bookmarks: BookmarksReducer
+    bookmarks: BookmarksReducer,
+    notifications: NotificationsReducer
 })
 
 export {

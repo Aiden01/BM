@@ -1,0 +1,24 @@
+
+.alert {
+    opacity: 0;
+    animation: fade .3s forwards;
+}
+
+@keyframes fade {
+    to {
+        opacity: 1;
+    }
+}
+
+.alert .top-bar.error {
+    background-color: #E3342F;
+}
+.alert .top-bar.success {
+    background-color: #38C172;
+}
+.alert .top-bar.warning {
+    background-color: #FFED4A;
+}
+.alert .top-bar.info {
+    background-color: #6574CD;
+}

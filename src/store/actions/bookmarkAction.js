@@ -12,10 +12,10 @@ export const fetchBookmarks = (limit = 15) => async dispatch => {
         .toArray()
     
     // dispatch to the reducer
-        dispatch({
-            type: FETCH_BOOKMARKS,
-            payload: bookmarks
-        })
+    dispatch({
+        type: FETCH_BOOKMARKS,
+        payload: bookmarks
+    })
     
 }
 
@@ -33,7 +33,7 @@ export const deleteBookmark = (id) => async dispatch => {
     })
 } 
 
-export const searchBookmark = (query) => async (dispatch, getState) => {
+export const searchBookmark = (query) => async (dispatch) => {
     // get the data
     const bookmarks = await db.bookmarks
         .toArray()
