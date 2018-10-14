@@ -37,7 +37,7 @@ class Bookmarks extends Component {
             <div className="bookmarks w-4/5 float-right">
                 <div className="p-10">
                     <PageTitle title="All your bookmarks" />
-                    <input type="text" placeholder="Search a bookmark" className="w-full bg-white p-5 text-grey-darkest mb-10" onChange={ this.handleSearch.bind(this) } />
+                    { this.props.bookmarks.length >= 1 ? <input type="text" placeholder="Search a bookmark" className="w-full bg-white p-5 text-grey-darkest mb-10" onChange={ this.handleSearch.bind(this) } />: '' }
                     { this.state.loading ? (
                         <h3>Loading...</h3>
                     ): this.props.bookmarks.length <= 0 ? <NoBookmarks />: bookmarks }
